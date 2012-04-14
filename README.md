@@ -34,7 +34,29 @@ not ready.
 
 Supported classes
 ----
-not ready.
+	Header File                  Supported
+	--------------------------------------
+	ik_ESoundEngineOptions.h        No
+	ik_ESoundOutputDrivers.h        Yes
+	ik_EStreamModes.h               Yes
+	ik_IAudioRecorder.h             Yes
+	ik_IAudioStream.h               No
+	ik_IAudioStreamLoader.h         No
+	ik_IFileFactory.h               Yes
+	ik_IFileReader.h                No
+	ik_IRefCounted.h                No
+	ik_ISound.h                     Yes
+	ik_ISoundDeviceList.h           Yes
+	ik_ISoundEffectControl.h        Yes
+	ik_ISoundEngine.h               Yes
+	ik_ISoundMixedOutputReceiver.h  Yes
+	ik_ISoundSource.h               No
+	ik_ISoundStopEventReceiver.h    No
+	ik_IVirtualRefCounted.h         No
+	ik_SAudioStreamFormat.h         Yes
+	ik_irrKlangTypes.h              Yes
+	ik_vec3d.h                      Yes
+	irrKlang.h                      Yes
 
 
 License

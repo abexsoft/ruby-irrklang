@@ -1,4 +1,4 @@
-%module(directors="1") "MiniatureGarden::IrrKlang"
+%module(directors="1") "IrrKlang"
 
 
 %include ik_vec3d.i
