@@ -3,7 +3,8 @@ require './LocalConfig.rb'
 
 topDir = File.dirname(File.dirname(File.expand_path(__FILE__)))
 execPlatform = LocalConfig::getExecPlatform().to_s
-archDir = topDir + "/build/" + execPlatform
+siteLib = topDir + "/build/lib/"
+siteLibArch = siteLib + execPlatform
 extlib = "../extlib"
 
 ### irrKlang
@@ -12,13 +13,16 @@ IRRKLANG_INC="-I" + IRRKLANG + "/include"
 
 if (/mingw/ =~ RUBY_PLATFORM)
   IRRKLANG_LIB_PATH = IRRKLANG + "/bin/win32-gcc"
-  system("mkdir -p #{archDir}/irrklang")
-  system("cp #{IRRKLANG_LIB_PATH}/*.dll #{archDir}/irrklang")
+  system("mkdir -p #{siteLibArch}/IrrKlang")
+  system("cp #{IRRKLANG_LIB_PATH}/*.dll #{siteLibArch}/IrrKlang")
 else
   IRRKLANG_LIB_PATH = IRRKLANG + "/bin/linux-gcc"
-  system("mkdir -p #{archDir}/irrklang")
-  system("cp #{IRRKLANG_LIB_PATH}/*.so #{archDir}/irrklang")
+  system("mkdir -p #{siteLibArch}/IrrKlang")
+  system("cp #{IRRKLANG_LIB_PATH}/*.so #{siteLibArch}/IrrKlang")
 end
+
+system("cp -r #{IRRKLANG}/include  #{topDir}/build/")
+
 
 IRRKLANG_LIB = "-L" + IRRKLANG_LIB_PATH + " -lIrrKlang"
 
@@ -31,7 +35,7 @@ else
   $LDFLAGS += " -static-libgcc -static-libstdc++ " + IRRKLANG_LIB
 end
 
-Config::MAKEFILE_CONFIG["sitelibdir"] = topDir + "/build/"
+Config::MAKEFILE_CONFIG["sitelibdir"] = siteLib
 Config::MAKEFILE_CONFIG["sitearch"] = execPlatform
 
 
