@@ -29,7 +29,7 @@ see ./build
 
 How to compile
 ----
-not ready. 
+see [INSTALL.md](https://github.com/abexsoft/ruby-irrklang/blob/master/INSTALL.md)
 
 
 Supported classes
