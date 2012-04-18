@@ -13,7 +13,6 @@
 
     > $ unzip -x irrKlang-1.3.0b.zip   
     > $ ln -s irrKlang-1.3.0b/ ./irrKlang   
-    > $ cd irrKlang
 
 2. make ruby extension libraries.
 
