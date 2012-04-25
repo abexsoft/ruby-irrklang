@@ -1,7 +1,7 @@
 .PHONY: clean
 
 SWIG = swig
-SWIGFLAGS = -ruby -c++ -I../../extlib/irrKlang/include/ -I./
+SWIGFLAGS = -ruby -c++ -I../../build/include/
 RUBY = ruby
 
 TARGET = irrklang_wrap.cpp

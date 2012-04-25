@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require './tool/LocalConfig.rb'
+
+archDir = LocalConfig::getExecPlatform().to_s
+
+topDir = File.dirname(File.expand_path(__FILE__))
+srcDir = "#{topDir}/extlib/irrKlang-1.3.0/"
+dstDir = "#{topDir}/build/"
+
+print "copying libraries..."
+system("mkdir -p #{dstDir}/lib/#{archDir}/")
+
+if (/mingw/ =~ RUBY_PLATFORM)
+  system("cp -a #{srcDir}/bin/win32-gcc/*.so #{dstDir}/lib/#{archDir}/")
+else
+  system("cp -a #{srcDir}/bin/linux-gcc/*.so #{dstDir}/lib/#{archDir}/")
+end
+
+system("cp -r #{srcDir}/include/  #{dstDir}")
+puts "done"
+
+

@@ -1,30 +1,16 @@
 require 'mkmf'
-require './LocalConfig.rb'
+require '../tool/LocalConfig.rb'
 
 topDir = File.dirname(File.dirname(File.expand_path(__FILE__)))
 execPlatform = LocalConfig::getExecPlatform().to_s
-siteLib = topDir + "/build/lib/"
-siteLibArch = siteLib + execPlatform
-extlib = "../extlib"
+
+buildDir =    "#{topDir}/build/"
+siteLib =     "#{buildDir}/lib/"
+siteLibArch = "#{siteLib}/#{execPlatform}"
 
 ### irrKlang
-IRRKLANG="#{extlib}/irrKlang"
-IRRKLANG_INC="-I" + IRRKLANG + "/include"
-
-if (/mingw/ =~ RUBY_PLATFORM)
-  IRRKLANG_LIB_PATH = IRRKLANG + "/bin/win32-gcc"
-  system("mkdir -p #{siteLibArch}/IrrKlang")
-  system("cp #{IRRKLANG_LIB_PATH}/*.dll #{siteLibArch}/IrrKlang")
-else
-  IRRKLANG_LIB_PATH = IRRKLANG + "/bin/linux-gcc"
-  system("mkdir -p #{siteLibArch}/IrrKlang")
-  system("cp #{IRRKLANG_LIB_PATH}/*.so #{siteLibArch}/IrrKlang")
-end
-
-system("cp -r #{IRRKLANG}/include  #{topDir}/build/")
-
-
-IRRKLANG_LIB = "-L" + IRRKLANG_LIB_PATH + " -lIrrKlang"
+IRRKLANG_INC=  "-I#{buildDir}/include"
+IRRKLANG_LIB = "-L#{siteLibArch} -lIrrKlang"
 
 # set flags
 $CFLAGS += " -g " + IRRKLANG_INC
